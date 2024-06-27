@@ -1,0 +1,34 @@
+{
+    "name": "Pause Action",
+    "maps": [
+        {
+            "name": "Pause Action",
+            "id": "a0cc9e09-671d-4f19-9598-86c2dd4b0086",
+            "actions": [
+                {
+                    "name": "Pause",
+                    "type": "Button",
+                    "id": "aeb212e3-ac6f-4a01-ba31-a083de8d04a4",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "0a0316fe-9b1e-4275-b33c-a2fac2612468",
+                    "path": "<OculusTouchController>{LeftHand}/menu",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
