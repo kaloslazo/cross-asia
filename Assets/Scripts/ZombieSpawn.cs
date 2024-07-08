@@ -5,13 +5,13 @@ using UnityEngine.AI;
 
 public class ZombieSpawn : MonoBehaviour
 {
-    public GameObject zombiePrefab; // Prefab del zombie
-    public int maxZombies = 10; // Máximo número de zombies
-    public float spawnRadius = 50f; // Radio de aparición alrededor del spawner
-    public float spawnInterval = 5f; // Intervalo de tiempo entre spawns
-    public float heightOffset = 0.5f; // Compensación de altura para ajustar la posición del spawn si es necesario
+    public GameObject zombiePrefab;
+    public int maxZombies = 10;
+    public float spawnRadius = 50f;
+    public float spawnInterval = 5f;
+    public float heightOffset = 0.5f;
 
-    private List<GameObject> zombies; // Lista para mantener el seguimiento de los zombies
+    private List<GameObject> zombies;
 
     void Start()
     {
@@ -29,19 +29,16 @@ public class ZombieSpawn : MonoBehaviour
                 Vector3 spawnPosition = RandomNavSphere(transform.position, spawnRadius, -1);
                 if (spawnPosition != Vector3.zero)
                 {
-                    // Ajuste de la altura para asegurar que los zombies no floten ni estén enterrados
                     spawnPosition += Vector3.up * heightOffset;
                     Quaternion spawnRotation = Quaternion.FromToRotation(Vector3.up, spawnPosition.normalized);
                     GameObject zombie = Instantiate(zombiePrefab, spawnPosition, spawnRotation);
                     zombies.Add(zombie);
                 }
             }
-            // Limpiar la lista de zombies que han sido destruidos (por ejemplo, si son eliminados del juego)
             zombies.RemoveAll(zombie => zombie == null);
         }
     }
 
-    // Función para encontrar una posición aleatoria que sea válida en la NavMesh
     public static Vector3 RandomNavSphere(Vector3 origin, float dist, int layermask)
     {
         for (int i = 0; i < 30; i++)
@@ -53,6 +50,6 @@ public class ZombieSpawn : MonoBehaviour
                 return navHit.position;
             }
         }
-        return Vector3.zero; // Retornar Vector3.zero si no se encuentra una posición válida
+        return Vector3.zero;
     }
 }
